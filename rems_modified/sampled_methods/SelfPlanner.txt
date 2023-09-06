@@ -1,0 +1,22 @@
+public Object clone() {
+    TaskManager clone;
+    try {
+        clone = (TaskManager)super.clone();
+        ArrayList<Task> t = new ArrayList<Task>();
+        Task[] orTasks = tasks();
+        for (int i = 0; i < orTasks.length; i++) {
+            t.add(orTasks[i]);
+        }
+        clone.setTasks(t);
+        /*{*/ArrayList<Solution> s = new ArrayList<Solution>();
+        if (pastSolutions != null) {
+            for (int i = 0; i < pastSolutions.size(); i++) {
+                s.add(pastSolutions.get(i));
+            }
+        }/*{*/
+        clone.setPastSolutions(s);
+        return clone;
+    } catch (CloneNotSupportedException e) {
+        return null;
+    }
+}
